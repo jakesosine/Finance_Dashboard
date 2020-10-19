@@ -17,13 +17,10 @@ names_df = pd.read_excel(
 supervisor_df = pd.read_excel(
     '../data/Names.xlsx', sheet_name='Supervisor_Salary')
 
-
-print(names_df.head())
-
-colors = ['rgba(32, 105, 224,.1)', 'rgba(244, 212, 124,.1)', 'rgba(8, 44, 108,.1)',
-          'rgba(135, 134, 131,.1)', 'rgb(190, 190, 190,.1)',  'rgba(68, 68, 68,.1)',
-          'rgba(32, 105, 224,.5)', 'rgba(244, 212, 124,.5)', 'rgba(8, 44, 108,.5)',
-          'rgba(135, 134, 131,.5)', 'rgb(190, 190, 190,.5)',  'rgba(68, 68, 68,.5)'
+colors = ['rgba(32, 105, 224,1)', 'rgba(200, 200, 124,1)', 'rgba(8, 44, 108,1)',
+          'rgba(135, 134, 131,1)', 'rgb(190, 190, 190,1)',  'rgba(68, 68, 68,1)',
+          'rgba(32, 105, 224,1)', 'rgba(244, 212, 124,1)', 'rgba(8, 44, 108,1)',
+          'rgba(135, 134, 131,1)', 'rgb(190, 190, 190,1)',  'rgba(68, 68, 68,1)'
           'rgba(32, 105, 224,1)', 'rgba(244, 212, 124,1)', 'rgba(8, 44, 108,1)',
           'rgba(135, 134, 131,1)', 'rgb(190, 190, 190,1)',  'rgba(68, 68, 68,1)']
 
@@ -48,8 +45,8 @@ fig_1.add_trace(go.Bar(
     name='BT Reimbursement Rates',
     orientation='h',
     marker=dict(
-        color='rgba(58, 71, 80, 0.6)',
-        line=dict(color='rgba(58, 71, 80, 1.0)', width=1)
+        color=colors[16],
+        line=dict(color=colors[6], width=1)
     )))
 
 
@@ -59,8 +56,8 @@ fig_1.add_trace(go.Bar(
     name='Clinical Director',
     orientation='h',
     textposition='inside',
-    marker=dict(color='rgba(85, 78, 43, 0.6)',
-                line=dict(color='rgba(85, 78, 23, 1.0)',
+    marker=dict(color=colors[10],
+                line=dict(color=colors[4],
                           width=1)),
 
 )),
@@ -68,7 +65,7 @@ fig_1.update_layout(barmode='stack')
 fig_1.update_xaxes(title_text="Reimbursement Rates")
 fig_1.update_yaxes(title_text="Insurance Provider")
 fig_1.update_layout(paper_bgcolor='rgba(0,0,0,0)',
-                    plot_bgcolor='rgba(0,0,0,0)')
+                    plot_bgcolor='rgba(0,0,0,0)'),
 
 
 fig_2 = go.Figure(data=[go.Pie(labels=names_df['Insurance Funding'],
@@ -150,7 +147,7 @@ app.layout = html.Div([
         html.H1(
             children="Dashboard",
             style={
-                'color': colors[13],
+                'color': colors[14],
                 'backgroundColor': "#18191c",
             }
         )
@@ -178,7 +175,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H4(children='Clinical Dashboard', style={
-                    'color': colors[13], 'backgroundColor': "#18191c"}),
+                    'color': colors[14], 'backgroundColor': "#18191c"}),
             html.Div(id='table_data'),
             dcc.Interval(id='update_table', interval=480 * 1000, n_intervals=0)
         ], className='container')
@@ -189,10 +186,10 @@ app.layout = html.Div([
             html.A("Tableau Clinical Dashboard",
                    href='https://public.tableau.com/profile/jacob.sosine1#!/'), html.Br(),
             html.A(
-                'Jakesosine github', href='https://github.com/jakesosine'), html.Br(), html.Br(),
+                'JakeSosine github', href='https://github.com/jakesosine'), html.Br(), html.Br(),
             'Created by ',
             html.A('@87JTS', href='https://twitter.com/87Jts')
-        ], className='container', style={'color': colors[13]}, id='footer')
+        ], className='container', style={'color': colors[15]}, id='footer')
     ], className='row')
 ], style={
     'backgroundColor': "#18191c"
